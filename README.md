@@ -81,5 +81,3 @@ A simple, responsive food menu website created using Bootstrap. This project sho
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-Feel free to update the content based on any additional features or requirements for your project!
