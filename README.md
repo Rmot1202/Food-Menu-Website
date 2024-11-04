@@ -1,4 +1,3 @@
-
 # Food Menu Website
 
 A responsive food menu website created with Bootstrap and JavaScript, featuring a dynamic menu and "Food of the Day" section powered by the Spoonacular API. This project showcases various dishes with their recipes, allows users to contact the restaurant, and provides information about the business.
