@@ -2,95 +2,107 @@
 <html lang="en">
 <head>
     <style>
-        .body{
+        .body {
             background: url(pngtree-Food-Menu-Fare-Meal-background-photo-869492.jpg);
             background-size: 2560px 1500px;
             background-repeat: no-repeat;
         }
-    </style>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </style>  
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        fetch('https://api.spoonacular.com/food/menuItems/search?query=pizza&number=9&apiKey=5407b4f7e48d4f839b288dc0cc4ac8dd')
+        .then(response => response.json())
+        .then(data => {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const carouselIndicators = document.querySelector('.carousel-indicators');
+            
+            // Clear any existing carousel content
+            carouselInner.innerHTML = '';
+            carouselIndicators.innerHTML = '';
+
+            // Update "Food of the Day" with the first item
+            const foodOfTheDay = data.menuItems[0];
+            document.getElementById('food-of-the-day-title').textContent = foodOfTheDay.title;
+            document.getElementById('food-of-the-day-image').src = foodOfTheDay.image;
+
+            // Populate carousel with the rest of the items
+            data.menuItems.forEach((item, index) => {
+                // Create carousel indicator
+                const indicator = document.createElement('button');
+                indicator.type = "button";
+                indicator.setAttribute('data-bs-target', '#demo');
+                indicator.setAttribute('data-bs-slide-to', index);
+                if (index === 0) indicator.classList.add('active'); // Make first indicator active
+                carouselIndicators.appendChild(indicator);
+
+                // Create carousel item
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item';
+                if (index === 0) carouselItem.classList.add('active'); // Make first item active
+
+                const itemContent = `
+                    <img src="${item.image}" alt="${item.title}" class="d-block w-100" style="height: 700px;">
+                    <div class="carousel-caption">
+                        <h3>${item.title}</h3>
+                    </div>
+                `;
+
+                carouselItem.innerHTML = itemContent;
+                carouselInner.appendChild(carouselItem);
+            });
+        })
+        .catch(error => console.error('Error fetching menu items:', error));
+    </script>
 </head>
-<body style="height:1500px" class="body" >
+<body style="height:1500px" class="body">
     <div class="bg-gradient"></div>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" href="Home.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="menu.html">Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>   
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>     
-            </ul>
-          </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="container" style="height: 800px;" >
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+    <div class="container" style="height: 400px; width: 1000px;">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators/dots -->
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-              <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-              <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            </div>
+            <div class="carousel-indicators"></div>
             
             <!-- The slideshow/carousel -->
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="download.jpeg" alt="Los Angeles" class="d-block rounded-5" style="width:100%; height: 700px;">
-                <div class="carousel-caption">
-                  <h3>Curry Chicken</h3>
-                  <p>Spicy</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="download (2).jpeg" alt="Chicago" class="d-block rounded-5" style="width:100% ;height: 700px;">
-                <div class="carousel-caption">
-                  <h3>Chicken souse</h3>
-                  <p>Sour</p>
-                </div> 
-              </div>
-              <div class="carousel-item">
-                <img src="download (3).jpeg" alt="New York" class="d-block rounded-5" style="width:100%;height: 700px;;">
-                <div class="carousel-caption">
-                  <h3>Pig Feet Souse</h3>
-                  <p>Sour</p>
-                </div>  
-              </div>
-            </div>
+            <div class="carousel-inner"></div>
             
             <!-- Left and right controls/icons -->
             <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
+                <span class="carousel-control-prev-icon"></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-              <span class="carousel-control-next-icon"></span>
+                <span class="carousel-control-next-icon"></span>
             </button>
         </div>
     </div>
-    <div class="card" style="width: 500px; height:600px;  " >
-            <img class="card-img-top " src="download (1).jpeg" alt="Card image" style="width:100%; height: 300px;">
+
+    <!-- Food of the Day Section -->
+    <div class="container mt-5">
+        <div class="card" style="width: 500px; height:600px;">
+            <img id="food-of-the-day-image" class="card-img-top" alt="Food of the Day" style="width:100%; height: 300px;">
             <div class="card-body">
-              <h2 class="card-title">Top Choice today</h4><br>
-              <p class="card-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-              <a href="#" class="btn btn-success">See recipe</a>
+                <h2 id="food-of-the-day-title" class="card-title">Top Choice Today</h2>
+                <p id="food-of-the-day-text" class="card-text">Our featured dish is ready for you to enjoy.</p>
+                <a href="#" class="btn btn-success">See recipe</a>
             </div>
+        </div>
     </div>
-    </div>    
 </body>
 </html>
-  
