@@ -1,13 +1,13 @@
 
 # Food Menu Website
 
-A simple, responsive food menu website created using Bootstrap. This project showcases various dishes along with their recipes, allows users to contact the restaurant, and view information about the business.
+A responsive food menu website created with Bootstrap and JavaScript, featuring a dynamic menu and "Food of the Day" section powered by the Spoonacular API. This project showcases various dishes with their recipes, allows users to contact the restaurant, and provides information about the business.
 
 ## Features
 
 - **Home Page**: 
-  - Displays a carousel of featured dishes with images and descriptions.
-  - Contains a "Top Choice Today" section showcasing a popular dish.
+  - Displays a carousel of featured dishes with images and descriptions, dynamically fetched from the Spoonacular API.
+  - Contains a "Food of the Day" section showcasing a popular dish, updated daily from the API.
 
 - **Menu Page**:
   - Lists several dishes with images, descriptions, and links to view detailed recipes.
@@ -18,15 +18,15 @@ A simple, responsive food menu website created using Bootstrap. This project sho
   - Features a quote from Paul Prudhomme.
 
 - **Contact Page**:
-  - A form that allows users to submit their email, name, phone number, and a description for any questions or feedback.
+  - A form that allows users to submit their email, name, phone number, and a description for questions or feedback.
   - Includes a rating system where users can rate their experience.
 
 ## Pages
 
-1. **Home**: Introduction with a featured dish carousel.
-2. **Menu**: List of all available recipes.
+1. **Home**: Introduction with a featured dish carousel and "Food of the Day" section.
+2. **Menu**: List of all available recipes, loaded dynamically from the Spoonacular API.
 3. **About**: Business history, mission, and team introduction.
-4. **Contact**: Contact form and user rating.
+4. **Contact**: Contact form and user rating system.
 
 ## Technologies Used
 
@@ -34,6 +34,7 @@ A simple, responsive food menu website created using Bootstrap. This project sho
 - **CSS3**
 - **Bootstrap 5.3.2** (for responsiveness and UI components)
 - **JavaScript** (for interactivity)
+- **Spoonacular API** (for fetching dish data dynamically)
 
 ## Getting Started
 
@@ -49,7 +50,7 @@ A simple, responsive food menu website created using Bootstrap. This project sho
     cd food-menu-website
     ```
 
-3. Open the `Home.html` file in your browser to view the website.
+3. Open the `Home.html` file in your browser to view the website. Make sure to replace the API key in the JavaScript file with your own Spoonacular API key.
 
 ## Project Structure
 
@@ -66,18 +67,15 @@ A simple, responsive food menu website created using Bootstrap. This project sho
 
 ## How to Use
 
-- **Home Page**: Explore the featured dishes and click the "See Recipe" button to view detailed recipes.
-- **Menu Page**: Scroll through the available dishes and view recipes. Load more dishes with the "Load More" button.
+- **Home Page**: Explore the carousel of featured dishes and click "See Recipe" to view detailed recipes. The "Food of the Day" section shows a new popular dish daily.
+- **Menu Page**: Scroll through the available dishes and view recipes. Use the "Load More" button to dynamically load more content.
 - **About Page**: Learn about the business history, mission, and staff.
-- **Contact Page**: Fill out the form to reach out with inquiries or feedback and rate your experience using the star system.
+- **Contact Page**: Submit inquiries or feedback using the form and rate your experience using the star system.
 
 ## Future Enhancements
 
-- Add more recipes and categorize them.
-- Implement a back-end system for handling form submissions and ratings.
-- Add functionality to dynamically load more content when the "Load More" button is clicked.
+- Expand the recipe categories and add filters.
+- Implement a back-end system for handling form submissions and storing ratings.
+- Add infinite scrolling for the "Menu" page, automatically loading more dishes as the user scrolls down.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+#
